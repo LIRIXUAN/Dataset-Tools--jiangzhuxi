@@ -5,7 +5,6 @@ import shutil
 import json
 from progressbar import ProgressBar
 
-
 def cvt():
     train_index = 0
     test_index = 0

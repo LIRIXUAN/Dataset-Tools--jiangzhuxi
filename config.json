@@ -1,0 +1,28 @@
+{
+    "job": {
+        "src_path": "../TF_Container/dataset/ntu_campus",
+        "dst_path": "./dataset_ex",
+        "quiet": true
+    },
+    "arguments": {
+        "expand_radio": 6,
+        "random_flip": {
+            "left_right": false,
+            "up_down": false
+        },
+        "gaussian_noise": {
+            "max_standard_deviation": 20,
+            "min_standard_deviation": 0,
+            "max_mean": 0,
+            "min_mean": 0
+        },
+        "contrast_change": {
+            "max_gamma": 1.4,
+            "min_gamma": 0.6
+        },
+        "random_chop": {
+            "max_radio": 1.2,
+            "min_radio": 0.8
+        }
+    }
+}
