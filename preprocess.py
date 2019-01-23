@@ -6,13 +6,14 @@ import numpy as np
 import random
 from progressbar import ProgressBar
 
-def add_noise(img,min_std = 10, max_std=0 ,min_mean = 0,max_mean = 0):
+def add_noise(img,min_std = 0, max_std=10 ,min_mean = 0,max_mean = 0):
     std = random.randint(min_std,max_std)
     mean = random.randint(min_mean,max_mean)
-    img = img.astype(np.float32)
+    img = img.astype(np.float32) ########
     noisy = img + np.random.normal(mean, std, img.shape)
-    noisy_clipped = np.clip(noisy, 0, 255).astype(np.uint8)
+    noisy_clipped = np.clip(noisy, 0, 255).astype(np.uint8) #限制值在0-255
     return noisy_clipped
+    
 
 def flip_lr(img):
     return np.fliplr(img)
@@ -22,9 +23,9 @@ def flip_ud(img):
 
 def change_contrast(img,min_gamma,max_gamma):
     gamma = random.randint(int(min_gamma*100),int(max_gamma*100))/100.0
-    lookUpTable = np.empty((1,256), np.uint8)
+    lookUpTable = np.zeros(shape=(1,256),dtype=np.uint8)  #uchar lookUpTable[256]
     for i in range(256):
-        lookUpTable[0,i] = np.clip(pow(i / 255.0, gamma) * 255.0, 0, 255)
+        lookUpTable[0,i] = np.clip(pow(i / 255.0, gamma) * 255.0, 0, 255)  ########
     return cv2.LUT(img, lookUpTable)
 
 def random_chop(x,y,min_radio,max_radio):

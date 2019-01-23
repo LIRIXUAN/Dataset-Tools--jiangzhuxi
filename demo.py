@@ -21,4 +21,5 @@ if __name__ == '__main__':
         cv2.imshow('raw',raw)
         cv2.imshow('expand',expand)
         cv2.waitKey(500)
+        cv2.imwrite('./demo_images/kittichange.jpg',expand)
 
